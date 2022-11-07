@@ -1,22 +1,21 @@
 // const cors = require("cors");
 const express = require('express'); 
+const app = express();
+app.use(express.json());
 const chats = require('./data/data');
 const dotenv = require('dotenv');
-
 dotenv.config();
-
-const app = express();
+const connectDB = require('./config/db');
+const user = require("./routes/userRoutes");
+const { errorHandler, notFound } = require('./middleware/errormiddleware');
+connectDB();
 
 app.get('/', (req, res) => {
 
     res.status(200).send("Hello Home");
 })
 
-app.get('/api/chat', (req, res) => {
-    res.status(200).json({
-        chats
-    })
-})
+app.use('/api/user',user)
 
 app.get("/api/chat/:id", (req, res) => {
     const chat = chats.find(chat => chat._id === req.params.id)
@@ -32,6 +31,10 @@ app.get("/api/chat/:id", (req, res) => {
      
     }
 });
+
+
+app.use(notFound)
+app.use(errorHandler);
 
 
 
