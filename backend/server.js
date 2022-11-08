@@ -1,14 +1,18 @@
 // const cors = require("cors");
 const express = require('express'); 
 const app = express();
+const cors = require("cors");
 app.use(express.json());
 const chats = require('./data/data');
 const dotenv = require('dotenv');
 dotenv.config();
 const connectDB = require('./config/db');
 const user = require("./routes/userRoutes");
+const { chatRoutes } = require('./routes/chatRoutes');
 const { errorHandler, notFound } = require('./middleware/errormiddleware');
 connectDB();
+
+app.use(cors()); 
 
 app.get('/', (req, res) => {
 
@@ -17,20 +21,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/user',user)
 
-app.get("/api/chat/:id", (req, res) => {
-    const chat = chats.find(chat => chat._id === req.params.id)
-    if (chat) {
-        res.status(200).json({
-          chat,
-        });
-        
-    } else {
-       res.status(203).json({
-         msg : "No chat with this ID ",
-       });
-     
-    }
-});
+app.get("/api/chat/",chatRoutes);
 
 
 app.use(notFound)

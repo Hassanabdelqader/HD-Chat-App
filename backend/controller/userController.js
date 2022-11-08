@@ -14,23 +14,27 @@ const handleSignup = expressAsyncHandler(async (req, res) => {
     
         const checkUser = await User.findOne({ email })
         if (checkUser) {
-             res.status(401);
-             throw new Error("The user is already there");
+             res.status(401).json({ msg: "The user is already there" });
         }
     
         const user = await User.create({
-            name,email,password,pic
-        })
+          name,
+          email,
+          password,
+          avatar:pic,
+        });
         if (user) {
             res.status(201).json({
                 _id: user._id,
                 name: user.name,
-                email: user.name,
+                email: user.email,
                 token : generateToken(user._id)
             })
         } else {
-            res.status(404);
-            throw new Error("somtheing went wrong while creating the user ");
+            res
+              .status(402)
+              .json({ msg: "somtheing went wrong while creating the user " });
+       
         }
     } catch (error) {
         console.log("Hassan ~ file: userController.js ~ line 34 ~ error", error)
@@ -59,4 +63,24 @@ const handleSignin = expressAsyncHandler(async (req, res) => {
 
 })
 
-module.exports = { handleSignup, handleSignin };
+const getUser = expressAsyncHandler(async (req, res) => {
+
+  const query = req.query.search;
+  if (!query) {
+   return res.status(200).send("Enter query to search for somthing ")
+  }
+  const regex = new RegExp(query, "i");
+    searchQuery = {
+      $or: [
+        { name: { $regex: regex } },
+        { email: { $regex: regex } },
+      ],
+    };
+   
+  const users =await User.find(searchQuery).find({ _id: { $ne: req.user._id } })
+  res.status(200).json({users})
+  
+})
+
+module.exports = {
+  handleSignup, handleSignin, getUser};
