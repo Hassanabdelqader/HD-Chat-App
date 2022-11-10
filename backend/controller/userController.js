@@ -27,7 +27,8 @@ const handleSignup = expressAsyncHandler(async (req, res) => {
             res.status(201).json({
                 _id: user._id,
                 name: user.name,
-                email: user.email,
+              email: user.email,
+                avatar:user.avatar,
                 token : generateToken(user._id)
             })
         } else {
@@ -54,6 +55,7 @@ const handleSignin = expressAsyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        avatar:user.avatar,
         token: generateToken(user._id),
       });
     } else {

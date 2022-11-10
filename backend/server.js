@@ -3,12 +3,11 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 app.use(express.json());
-const chats = require('./data/data');
 const dotenv = require('dotenv');
 dotenv.config();
 const connectDB = require('./config/db');
 const user = require("./routes/userRoutes");
-const { chatRoutes } = require('./routes/chatRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 const { errorHandler, notFound } = require('./middleware/errormiddleware');
 connectDB();
 
@@ -21,7 +20,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/user',user)
 
-app.get("/api/chat/",chatRoutes);
+app.use("/api/chat",chatRoutes);
 
 
 app.use(notFound)
