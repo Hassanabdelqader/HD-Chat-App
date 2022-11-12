@@ -63,7 +63,7 @@ const UpdategroupModel = () => {
       };
 
       const { data } = await axios.put(
-        `${process.env.REACT_APP_BASE_URL}api/chat/renamegroup`,
+        `/api/chat/renamegroup`,
         formData,
         {
           headers: {
@@ -116,7 +116,7 @@ const UpdategroupModel = () => {
     };
 
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}api/chat/addtogroup`,
+      `/api/chat/addtogroup`,
       formData,
       {
         headers: {
@@ -146,7 +146,7 @@ const UpdategroupModel = () => {
       };
 
       const { data } = await axios.put(
-          `${process.env.REACT_APP_BASE_URL}api/chat/removefromgroup`,
+          `/api/chat/removefromgroup`,
           formData,
           {
               headers: {
@@ -165,7 +165,7 @@ const UpdategroupModel = () => {
     setSearch(query.target.value);
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}api/user/users?search=${query.target.value}`,
+        `/api/user/users?search=${query.target.value}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

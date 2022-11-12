@@ -49,7 +49,7 @@ const Login = () => {
        };
 
        const { data } = await axios.post(
-         `${process.env.REACT_APP_BASE_URL}api/user/login`,
+         `/api/user/login`,
          formData,
          {
            config,
@@ -65,7 +65,8 @@ const Login = () => {
         });
         setIsloading(false);
         localStorage.setItem("info", JSON.stringify(data));
-        history.push("/chats");
+        window.location.reload(false);
+        // history.push("/chats");
       }
     } catch (error) {
       toast({

@@ -72,7 +72,7 @@ function Sidedrawer({ fetchDataGlobalChat }) {
 
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}api/user/users?search=${search}`,
+        `/api/user/users?search=${search}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -116,7 +116,7 @@ function Sidedrawer({ fetchDataGlobalChat }) {
       };
 
       const { data } = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}api/chat/Createchat`,
+        `/api/chat/Createchat`,
         formData,
         {
           headers: {

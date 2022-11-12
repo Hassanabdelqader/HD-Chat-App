@@ -68,7 +68,7 @@ const Signup = () => {
       };
     
       const { data } = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}api/user/signup`,
+        `/api/user/signup`,
         formData,
         {
           config,
@@ -84,7 +84,8 @@ const Signup = () => {
       });
       setIsloading(false);
       setUser(data);
-       history.push("/chats");
+      window.location.reload(false);
+      //  history.push("/chats");
     } catch (error) {
       if (!error.response?.status) {
         toast({
