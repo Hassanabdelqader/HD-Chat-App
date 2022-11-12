@@ -1,10 +1,11 @@
 {
-  "name": "hd-chat",
+  "name": "hd-chat Hasan",
   "version": "1.0.0",
   "description": "this is project for chat",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix frontend  && npm run build --prefix frontend" 
   },
   "author": "Hasan",
   "license": "MIT",

@@ -10,13 +10,12 @@ const user = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messagesRoutes = require("./routes/messagesRoutes");
 const { errorHandler, notFound } = require("./middleware/errormiddleware");
+const path =require("path")
 connectDB();
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.status(200).send("Hello Home");
-});
+
 
 app.use("/api/user", user);
 
@@ -24,7 +23,22 @@ app.use("/api/chat", chatRoutes);
 
 app.use("/api/messages", messagesRoutes);
 
-app.use(notFound);
+// Start deplyment Codes *********************
+
+const _dirname1 = path.resolve();
+if (process.env.NODE_ENV === "productions") {
+  app.use(express.static(path.join(_dirname1, "/frontend/build")));
+  app.get("*", (req,res) => {
+    res.sendFile(path.resolve(_dirname1,"frontend","build","index.html"))
+  })
+} else {
+  app.get("/", (req, res) => {
+    res.status(200).send("Hello Home");
+  });
+}
+  // End of deployment *********************
+
+  app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3002;
@@ -51,7 +65,6 @@ io.on("connection", (socket) => {
 
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("joined with Room " + room);
   });
 
   socket.on("start typing", (room) => {
@@ -63,7 +76,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("new message", (newMessage) => {
-    console.log(newMessage);
     var chat = newMessage.chat;
     if (!chat.users) return console.log("user is not defind ");
 
