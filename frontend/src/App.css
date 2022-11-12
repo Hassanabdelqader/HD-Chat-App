@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+VIC+WA+NT+Beginner&family=Oswald&family=Rubik+Moonrocks&display=swap');
+
+
+ .App {
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  background-image: url("./assests/images/backgroundchat.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.281);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
