@@ -65,7 +65,8 @@ const Login = () => {
         });
         setIsloading(false);
         localStorage.setItem("info", JSON.stringify(data));
-        history.push("/chats");
+        window.location.reload(false);
+        // history.push("/chats");
       }
     } catch (error) {
       toast({

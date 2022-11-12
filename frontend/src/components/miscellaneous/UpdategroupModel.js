@@ -146,7 +146,7 @@ const UpdategroupModel = () => {
       };
 
       const { data } = await axios.put(
-          `$/api/chat/removefromgroup`,
+          `/api/chat/removefromgroup`,
           formData,
           {
               headers: {

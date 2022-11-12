@@ -84,7 +84,8 @@ const Signup = () => {
       });
       setIsloading(false);
       setUser(data);
-       history.push("/chats");
+      window.location.reload(false);
+      //  history.push("/chats");
     } catch (error) {
       if (!error.response?.status) {
         toast({
