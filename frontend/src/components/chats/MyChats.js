@@ -90,7 +90,7 @@ const MyChats = () => {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chat.length ? (
+        {chat?.length ? (
           <Stack overflowY="scroll">
             {chat.map((localchat) => (
               <Box
