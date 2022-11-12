@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "productions") {
   })
 } else {
   app.get("/", (req, res) => {
-    res.status(200).send("Hello Home");
+    res.status(200).send("Hello Hassan");
   });
 }
   // End of deployment *********************
