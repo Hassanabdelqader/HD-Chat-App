@@ -94,7 +94,7 @@ const Singlechat = ({ fetchDataGlobalChat }) => {
     setLoading(true);
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}api/messages/${selectedChat._id}`,
+      `/api/messages/${selectedChat._id}`,
       {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -143,7 +143,7 @@ const Singlechat = ({ fetchDataGlobalChat }) => {
 
       setNewMessage("");
       const { data } = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}api/messages`,
+        `/api/messages`,
         newData,
         {
           headers: {

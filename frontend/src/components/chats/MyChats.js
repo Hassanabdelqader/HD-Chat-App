@@ -30,7 +30,7 @@ const MyChats = () => {
     console.log(loggedUser)
       try {
          const { data } = await axios.get(
-           `${process.env.REACT_APP_BASE_URL}api/chat/getallChat`,
+           `$/api/chat/getallChat`,
            {
              headers: {
                Authorization: `Bearer ${
