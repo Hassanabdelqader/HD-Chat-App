@@ -66,6 +66,7 @@ io.on("connection", (socket) => {
   console.log("connected to server ");
   console.log("");
   console.log("");
+  console.log("");
 
   socket.on("setup", (user) => {
     socket.join(user._id);
