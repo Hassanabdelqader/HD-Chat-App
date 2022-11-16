@@ -249,7 +249,7 @@ const Signup = () => {
           onChange={(e) => postimage(e.target.files[0])}
         />
       </FormControl>
-      <Button colorScheme="blue" variant="solid" size={"100%"} p={"2"}
+      <Button
         isLoading={isLoading}
         onClick = {(e)=>handleSubmit()}
       >

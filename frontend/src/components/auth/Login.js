@@ -11,6 +11,8 @@ import {
   StackDivider,
   VStack,
   useToast,
+  Box,
+  Text,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 
@@ -115,9 +117,13 @@ const Login = () => {
       </FormControl>
 
       <Button
-        colorScheme="green"
-        variant="solid"
+        // colorScheme="green"
+        // variant="solid"
         size={"100%"}
+        // bg="brand.900"
+
+        // variants={{ base: "base", md: "md" }}
+        // variant={["base", "sm", "md"]}
         p={"2"}
         isLoading={isLoading}
         onClick={(e) => handleSubmit()}

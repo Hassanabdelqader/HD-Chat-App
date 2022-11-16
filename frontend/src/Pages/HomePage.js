@@ -30,14 +30,25 @@ const HomePage = () => {
         display="flex"
         justifyContent="center"
         p={3}
-        bg="white"
+        // bg="white"
+        // bg={["base", "sm", "md"]}
         w="100%"
         m="40px 0 15px 0"
         borderRadius="20px"
         borderWidth="3px"
+        // h="200px"
+        bgGradient={[
+          "linear(to-tr, teal.300, yellow.400)",
+          "linear(to-t, blue.200, teal.500)",
+          "linear(to-b, orange.100, purple.300)",
+        ]}
       >
-        <Text color="black" fontSize="3xl" fontFamily="work sans">
-          {" "}
+        <Text
+          bgGradient="linear(to-l, #7928CA, #FF0080)"
+          bgClip="text"
+          fontSize="6xl"
+          fontWeight="extrabold"
+        >
           HD Chat{" "}
         </Text>
       </Box>
